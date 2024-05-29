@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MyAntProject" basedir="." default="compile">
+
+    <!-- Set the Java compiler source and target versions -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+
+    <!-- Clean the build directory -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- Compile the Java source code -->
+    <target name="compile" depends="clean">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}"/>
+    </target>
+
+    <!-- Run the compiled classes -->
+    <target name="run" depends="compile">
+        <java classname="com.prince.HotelManagement" fork="true">
+            <classpath>
+                <pathelement path="${build.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+</project>
